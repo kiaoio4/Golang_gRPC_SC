@@ -1,0 +1,22 @@
+syntax = "proto3";  //protobuf3协议
+
+//option go_package = "./";
+option java_multiple_files = true;
+option java_package = "./";
+option java_outer_classname = "MessageProto";
+option go_package = "./";
+package proto;
+
+service FrameData {
+    // rpc FrameDataCallback(FrameDataRequest) returns (FrameDataResponse);
+    rpc FrameDataCallback(stream FrameDataRequest) returns (FrameDataResponse){}
+}
+
+message FrameDataRequest {
+    bytes key = 2;
+    bytes value = 3;
+}
+
+message FrameDataResponse {
+    bool successed = 1;
+}
